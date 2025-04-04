@@ -1,1 +1,11 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@plugin '@midudev/tailwind-animations';
+
+@theme {
+  --color-dark-primary: #06090f;
+  --color-dark-secondary: #0c121e;
+  --color-dark-tertiary: #111b2c;
+  --color-dark-accent: #17243b;
+
+  --color-dark: #141414;
+}
