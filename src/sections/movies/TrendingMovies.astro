@@ -1,0 +1,34 @@
+---
+import { requestsFilms } from '@/services/requests/requests-films'
+import { trendingMovies } from '@/services/consts/endpoints'
+import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
+
+const trendingFilms = await requestsFilms(trendingMovies)
+
+const randomIndex = Math.floor(Math.random() * trendingFilms.results.length)
+
+const film = trendingFilms.results[randomIndex]
+---
+
+{
+  film && (
+    <div class="relative aspect-video">
+      <img
+        src={`${IMAGES_PATH}${film.poster_path}`}
+        alt={film.title}
+        class="aspect-video min-w-full object-center"
+        loading="eager"
+        fetchpriority="high"
+        decoding="sync"
+      />
+      <div class="absolute bottom-2 left-1 lg:bottom-24 lg:left-8">
+        <span class="text-shadow mb-0.5 block text-xl text-pretty text-white lg:text-3xl lg:font-bold">
+          {film.title}
+        </span>
+        <button class="cursor-pointer rounded-lg border-2 border-transparent bg-gray-600/60 px-4 py-2 text-white hover:border-2 hover:border-white hover:bg-gray-600/50 lg:px-8 lg:py-4 lg:text-lg lg:font-bold">
+          Ver más
+        </button>
+      </div>
+    </div>
+  )
+}

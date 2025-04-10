@@ -2,8 +2,28 @@
 import SearchFilm from './SearchFilm.astro'
 ---
 
-<header class="items-cente flex w-full px-6 py-4 text-white">
+<header class="fixed top-0 z-10 flex w-full items-center px-6 py-4 text-white">
   <img class="h-16 w-auto" src="/images/cine_logo-big.webp" alt="Logo de cine Info" />
 
   <SearchFilm />
 </header>
+
+<style>
+  header {
+    background: transparent;
+    animation: header-blur-scroll 0.3s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 300px;
+  }
+
+  @keyframes header-blur-scroll {
+    0% {
+      backdrop-filter: blur(0px);
+      background: transparent;
+    }
+    100% {
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+</style>

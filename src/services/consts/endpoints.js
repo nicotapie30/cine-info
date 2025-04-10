@@ -1,4 +1,4 @@
-// Endoints disponibles para la API de TMDB
+// Endpoints disponibles para la API de TMDB
 const endpoints = {
   popularMovies: 'movie/popular',
   topRatedMovies: 'movie/top_rated',
@@ -14,5 +14,6 @@ export const {
   upComingMovies,
   nowPlayingMovies,
   movieDetails,
-  trendingMovies
+  trendingMovies,
+  recomendationsMovies
 } = endpoints

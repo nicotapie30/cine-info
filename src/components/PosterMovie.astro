@@ -1,0 +1,25 @@
+---
+const { src, alt, title } = Astro.props
+---
+
+<div
+  class="group hover:bg-dark-tertiary relative h-[20rem] w-[15rem] cursor-pointer overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:scale-100 hover:border hover:border-white"
+>
+  <img
+    src={src}
+    alt={alt}
+    class="h-full w-full rounded-lg transition-all duration-300 group-hover:scale-95 hover:opacity-50"
+    loading="lazy"
+    fetchpriority="low"
+    decoding="async"
+  />
+  <div
+    class="animate-fade-in animate-duration-300 pointer-events-none absolute bottom-2 left-1 hidden transition-all group-hover:block"
+  >
+    <span class="text-shadow mb-0.5 block text-lg font-bold text-pretty text-white">{title}</span>
+    <button
+      class="pointer-events-auto cursor-pointer rounded-lg border-2 border-transparent bg-gray-600/80 px-4 py-2 text-white hover:border-2 hover:border-white hover:bg-gray-600/50"
+      >Ver más</button
+    >
+  </div>
+</div>
