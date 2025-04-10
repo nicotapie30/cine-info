@@ -1,17 +1,16 @@
 ---
 import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
-import { popularMovies } from '@/services/consts/endpoints'
-import { requestsFilms } from '@/services/requests/requests-films'
 import PosterMovie from '@/components/PosterMovie.astro'
+import { getAllMovies } from '@/lib/allMovies.js'
 
-const popularFilms = await requestsFilms(popularMovies, { page: 1, language: 'es-ES' })
+const movies = await getAllMovies()
 ---
 
 <section
   class="grid h-auto w-full grid-cols-1 place-items-center gap-4 md:grid-cols-3 lg:grid-cols-5"
 >
   {
-    popularFilms.results.map((film) => {
+    movies.map((film) => {
       return (
         <PosterMovie
           src={`${IMAGES_PATH}${film.poster_path}`}

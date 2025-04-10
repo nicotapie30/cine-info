@@ -1,6 +1,6 @@
 ---
 import { requestsFilms } from '@/services/requests/requests-films'
-import { trendingMovies } from '@/services/consts/endpoints'
+import { trendingMovies } from '@/lib/endpoints'
 import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
 
 const trendingFilms = await requestsFilms(trendingMovies)
