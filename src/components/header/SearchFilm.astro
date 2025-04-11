@@ -2,10 +2,22 @@
 import SearchIcon from '@/assets/svg/Search.svg'
 ---
 
-<form>
-  <div class="flex min-w-2xs items-center justify-center">
-    <SearchIcon />
-    <input class="" type="search" placeholder="Buscar..." />
+<form aria-label="Formlario de búsqueda">
+  <div
+    class="shadow-inset-sm relative flex min-w-2xs items-center justify-center rounded-lg bg-gray-900/70 backdrop-blur-lg"
+  >
+    <SearchIcon class="absolute left-1" />
+    <input
+      class="w-full appearance-none rounded-lg border-none p-2 pl-8 text-gray-100 transition-all outline-none placeholder:text-gray-100 focus:border-none focus:ring-1 focus:ring-gray-100/50 focus:outline-none"
+      type="search"
+      placeholder="Buscar..."
+    />
   </div>
-  <!-- Componente de cuenta de usuario -->
 </form>
+
+<style>
+  input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+</style>

@@ -1,12 +1,13 @@
 import { requestsFilms } from '@/services/requests/requests-films'
 import { popularMovies } from '@/lib/endpoints'
 
-export async function getAllMovies(language = 'es-ES') {
+export async function getAllMovies(language = 'es-ES', params = {}) {
   const allMovies = []
 
   const firstPage = await requestsFilms(popularMovies, {
     language,
-    page: 1
+    page: 1,
+    ...params
   })
 
   if (!firstPage || !firstPage.results) return []

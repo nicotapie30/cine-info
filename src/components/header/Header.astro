@@ -1,16 +1,21 @@
 ---
 import SearchFilm from './SearchFilm.astro'
+
+const { href } = Astro.props
 ---
 
-<header class="fixed top-0 z-10 flex w-full items-center px-6 py-4 text-white">
-  <img class="h-16 w-auto" src="/images/cine_logo-big.webp" alt="Logo de cine Info" />
+<header
+  class="fixed top-0 z-10 flex w-full items-center justify-between bg-gradient-to-b from-gray-900 to-transparent px-6 py-4 text-white transition-all"
+>
+  <a href="/index.html">
+    <img class="h-16 w-auto" src="/images/cine_logo-big.webp" alt="Logo de cine Info" />
+  </a>
 
   <SearchFilm />
 </header>
 
 <style>
   header {
-    background: transparent;
     animation: header-blur-scroll 0.3s linear both;
     animation-timeline: scroll();
     animation-range: 0 300px;
@@ -19,11 +24,11 @@ import SearchFilm from './SearchFilm.astro'
   @keyframes header-blur-scroll {
     0% {
       backdrop-filter: blur(0px);
-      background: transparent;
+      background: linear-gradient(to bottom #101828, transparent);
     }
     100% {
       backdrop-filter: blur(10px);
-      background: rgba(0, 0, 0, 0.3);
+      background: linear-gradient(to bottom #101828, transparent);
     }
   }
 </style>
