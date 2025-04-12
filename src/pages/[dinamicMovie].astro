@@ -17,9 +17,10 @@ const movie = movies.find((movie) => movie.title === dinamicMovie)
 <Layout title={movie.title}>
   <div class="relative mt-26 ml-10">
     <img
-      src={`${IMAGES_PATH}${movie.backdrop_path}`}
+      transition:name="movie"
+      src={`${IMAGES_PATH}${movie.poster_path}`}
       alt={movie.title}
-      class="mask-fade-bottom aspect-video h-auto w-[60%] rounded-lg object-center"
+      class="mask-fade-bottom animate-fade-in-down animate-duration-300 aspect-video h-auto w-[60%] rounded-lg object-center"
     />
 
     <span class="text-white">
@@ -37,6 +38,7 @@ const movie = movies.find((movie) => movie.title === dinamicMovie)
 
     <div class="bottom-2 left-1 lg:bottom-24 lg:left-8">
       <span
+        transition:name="movie-name"
         class="text-shadow mb-0.5 block text-2xl text-pretty text-white lg:text-4xl lg:font-bold"
       >
         {movie.title}
