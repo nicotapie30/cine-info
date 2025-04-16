@@ -15,7 +15,7 @@ const film = trendingFilms.results[randomIndex]
     <div class="relative aspect-video">
       <img
         transition:name="movie"
-        src={`${IMAGES_PATH}${film.poster_path}`}
+        src={`${IMAGES_PATH}${film.backdrop_path}`}
         alt={film.title}
         class="mask-fade-bottom animate-fade-in aspect-video min-w-full object-center"
         loading="eager"

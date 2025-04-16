@@ -7,7 +7,7 @@ const movies = await getAllMovies()
 ---
 
 <section
-  class="grid h-auto w-full grid-cols-1 place-items-center gap-4 md:grid-cols-3 lg:grid-cols-5"
+  class="grid h-auto w-full grid-cols-1 place-items-center gap-4 md:grid-cols-3 lg:grid-flow-dense lg:grid-cols-5"
 >
   {
     movies.map((film) => {

@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro'
 import { getMoviesPaths } from '@/lib/getMoviesPaths.js'
 import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
 import { getAllMovies } from '@/lib/allMovies.js'
+import TrailerYoutube from '@/components/TrailerYoutube.astro'
 
 export const getStaticPaths = async () => {
   return await getMoviesPaths()
@@ -14,40 +15,45 @@ const movies = await getAllMovies()
 const movie = movies.find((movie) => movie.title === dinamicMovie)
 ---
 
-<Layout title={movie.title}>
-  <div class="relative mt-26 ml-10">
-    <img
-      transition:name="movie"
-      src={`${IMAGES_PATH}${movie.poster_path}`}
-      alt={movie.title}
-      class="mask-fade-bottom animate-fade-in-down animate-duration-300 aspect-video h-auto w-[60%] rounded-lg object-center"
-    />
+<Layout title={`Cine info - ${movie.title}`} description={movie.overview}>
+  <main class="px-8 py-10">
+    <section>
+      <img
+        src=`${IMAGES_PATH}${movie.backdrop_path}`
+        alt={movie.title}
+        class="aspect-video h-auto w-[60%] rounded-lg"
+      />
+      <article>
+        <span class="text-white">
+          puntuacion: {movie.vote_average}
+          {movie.id}
+        </span>
 
-    <span class="text-white">
-      puntuacion: {movie.vote_average}
-      {movie.id}
-    </span>
+        <span class="text-white">
+          votos: {movie.vote_count}
+        </span>
 
-    <span class="text-white">
-      votos: {movie.vote_count}
-    </span>
+        <span class="text-white">
+          fecha: {movie.release_date}
+        </span>
 
-    <span class="text-white">
-      fecha: {movie.release_date}
-    </span>
-
-    <div class="bottom-2 left-1 lg:bottom-24 lg:left-8">
-      <span
-        transition:name="movie-name"
-        class="text-shadow mb-0.5 block text-2xl text-pretty text-white lg:text-4xl lg:font-bold"
-      >
-        {movie.title}
-      </span>
-      <span
-        class="text-shadow mb-0.5 block text-xl text-pretty text-white lg:text-3xl lg:font-bold"
-      >
-        {movie.overview}
-      </span>
+        <div class="bottom-2 left-1 lg:bottom-24 lg:left-8">
+          <span
+            transition:name="movie-name"
+            class="text-shadow mb-0.5 block text-2xl text-pretty text-white lg:text-4xl lg:font-bold"
+          >
+            {movie.title}
+          </span>
+          <span
+            class="text-shadow mb-0.5 block text-xl text-pretty text-white lg:text-3xl lg:font-bold"
+          >
+            {movie.overview}
+          </span>
+        </div>
+      </article>
+    </section>
+    <div class="mt-26 ml-10 w-[60%] overflow-hidden">
+      <TrailerYoutube videoId={movie.id} trailerTitle={movie.title} />
     </div>
-  </div>
+  </main>
 </Layout>
