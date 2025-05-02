@@ -1,0 +1,32 @@
+---
+const { movie } = Astro.props
+---
+
+<section class="animate-fade-in flex w-[40%] flex-col justify-between">
+  <div class="bottom-2 left-1 lg:bottom-24 lg:left-8">
+    <span
+      transition:name="movie-name"
+      class="text-shadow mb-6 block text-2xl text-pretty text-white underline lg:text-4xl lg:font-bold"
+    >
+      {movie.title}
+    </span>
+    <span
+      class="text-shadow mb-1 block text-justify text-base text-pretty text-white lg:text-xl lg:font-medium"
+    >
+      {movie.overview}
+    </span>
+  </div>
+  <div class="flex gap-6">
+    <span class="text-white">
+      Puntuacion: {Math.round(movie.vote_average)}
+    </span>
+
+    <span class="text-white">
+      Opiniones: {movie.vote_count}
+    </span>
+
+    <span class="text-white">
+      Fecha: {movie.release_date}
+    </span>
+  </div>
+</section>

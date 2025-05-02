@@ -4,17 +4,19 @@ const { src, alt, title } = Astro.props
 
 <div
   transition:name="movie"
-  class="group contenedor hover:bg-dark-tertiary relative h-[23rem] w-[18rem] overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:scale-100 hover:border hover:border-white"
+  class="group contenedor relative h-[23rem] w-[18rem] overflow-hidden rounded-lg border border-transparent shadow-md transition-all duration-300 hover:border hover:border-zinc-400"
 >
   <img
     src={src}
     alt={alt}
-    class="contenedor animate-fade-in animate-duration-300 group-hover:mask-fade-name h-full w-full rounded-lg transition-all duration-300 group-hover:scale-95 group-hover:opacity-50"
+    class="contenedor animate-fade-in animate-duration-300 group-hover:mask-fade-name absolute inset-0 h-full w-full rounded-lg transition-all duration-300 group-hover:scale-95"
     loading="lazy"
     fetchpriority="low"
     decoding="async"
   />
-  <div class="pointer-events-none absolute bottom-2 left-1 hidden transition-all group-hover:block">
+  <div
+    class="pointer-events-none absolute bottom-2 left-1.5 hidden transition-all group-hover:block"
+  >
     <span
       transition:name="movie-name"
       class="text-shadow mb-0.5 block text-xl font-bold text-pretty text-white">{title}</span

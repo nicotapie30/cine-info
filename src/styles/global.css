@@ -22,9 +22,25 @@
 }
 
 @utility mask-fade-bottom {
-  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #0c121e 80%, transparent 100%);
+}
+
+@utility mask-fade-right {
+  mask-image: linear-gradient(to right, #0c121e 80%, transparent 100%);
+}
+
+@utility mask-fade-left {
+  mask-image: linear-gradient(to left, #0c121e 80%, transparent 100%);
+}
+
+@utility mask-fade-top {
+  mask-image: linear-gradient(to top, #0c121e 80%, transparent 100%);
+}
+
+@utility mask-fade-image-film {
+  mask-image: linear-gradient(to bottom, #0c121e 80%, transparent 100%);
 }
 
 @utility mask-fade-name {
-  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #0c121e 50%, transparent 100%);
 }
