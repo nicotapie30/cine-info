@@ -4,27 +4,31 @@ const { src, alt, title } = Astro.props
 
 <div
   transition:name="movie"
-  class="group contenedor relative h-[23rem] w-[18rem] overflow-hidden rounded-lg border border-transparent shadow-md transition-all duration-300 hover:border hover:border-zinc-400"
+  class="group contenedor relative h-[23rem] w-[18rem] overflow-hidden rounded-lg border border-transparent shadow-md transition-all duration-300 focus-within:border focus-within:border-zinc-400 hover:border hover:border-zinc-400"
+  tabindex="0"
 >
   <img
     src={src}
     alt={alt}
-    class="contenedor animate-fade-in animate-duration-300 group-hover:mask-fade-name absolute inset-0 h-full w-full rounded-lg transition-all duration-300 group-hover:scale-95"
+    class="contenedor animate-fade-in animate-duration-300 group-hover:mask-fade-name absolute inset-0 h-full w-full rounded-lg transition-all duration-300 group-focus-within:scale-95 group-hover:scale-95"
     loading="lazy"
     fetchpriority="low"
     decoding="async"
   />
   <div
-    class="pointer-events-none absolute bottom-2 left-1.5 hidden transition-all group-hover:block"
+    class="pointer-events-none absolute bottom-2 left-1.5 opacity-0 transition-all group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100"
   >
     <span
       transition:name="movie-name"
       class="text-shadow mb-0.5 block text-xl font-bold text-pretty text-white">{title}</span
     >
     <a
-      class="pointer-events-auto inline-block cursor-pointer rounded-lg border-2 border-transparent bg-gray-500/50 px-4 py-2 text-white transition-all duration-100 hover:scale-105 hover:border-2 hover:border-white hover:bg-gray-600/50"
-      href={`/${title}`}>Ver más</a
+      class="pointer-events-auto inline-block cursor-pointer rounded-lg border-2 border-transparent bg-gray-500/50 px-4 py-2 text-white transition-all duration-100 hover:scale-105 hover:border-white hover:bg-gray-600/50 focus:scale-105 focus:border-white focus:bg-gray-600/50"
+      href={`/${title}`}
+      tabindex="0"
     >
+      Ver más
+    </a>
   </div>
 </div>
 
