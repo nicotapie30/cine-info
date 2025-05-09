@@ -8,6 +8,7 @@ export const dinamicPagesMovies = () => {
   const searchMovie = document.querySelector('.search-movie') // Resultados de búsqueda en index.astro
   const popularMovies = document.querySelector('.popular-movies') // Resultados de búsqueda en PosterPopularMovies.astro
 
+  // Evento del input Search
   searchInput.addEventListener('input', (e) => {
     const target = e.target
     const searchValue = target.value.toLowerCase()
@@ -55,6 +56,19 @@ export const dinamicPagesMovies = () => {
       searchMovie.innerHTML = ''
       popularMovies.classList.remove('hidden')
     }
+  })
+
+  const a = document.querySelector('.link-home')
+
+  // Evento del enlace "Ver más"
+  a.addEventListener('click', (e) => {
+    e.preventDefault()
+    window.history.pushState({}, '', '/')
+    window.location.reload()
+  })
+
+  window.addEventListener('popstate', () => {
+    window.location.reload()
   })
 
   // Validaciones
