@@ -1,17 +1,15 @@
 ---
-import SearchFilm from './SearchFilm.astro'
-
-const { href } = Astro.props
+import InputSearch from './search/InputSearch.astro'
 ---
 
 <header
   class="fixed top-0 z-10 flex w-full items-center justify-between bg-gradient-to-b from-gray-900 to-transparent px-6 py-4 text-white transition-all"
 >
-  <a href="/index.html">
+  <a href="/" class="link-home">
     <img class="h-16 w-auto" src="/images/cine_logo-big.webp" alt="Logo de cine Info" />
   </a>
 
-  <SearchFilm />
+  <InputSearch />
 </header>
 
 <style>

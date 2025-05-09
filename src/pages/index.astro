@@ -6,5 +6,12 @@ import PosterPopularMovies from '@/sections/PosterPopularMovies.astro'
 
 <Layout title="Cine Info">
   <Hero />
+  <div class="search-movie flex flex-wrap gap-6 p-6"></div>
   <PosterPopularMovies />
 </Layout>
+
+<script>
+  import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
+
+  dinamicPagesMovies()
+</script>

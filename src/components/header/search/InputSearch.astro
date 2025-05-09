@@ -1,0 +1,21 @@
+---
+import SearchIcon from '@/assets/svg/Search.svg'
+---
+
+<form class="form-search">
+  <div class="relative flex items-center justify-center">
+    <SearchIcon class="absolute left-1" />
+    <input
+      class="input-search w-full appearance-none rounded-lg border-none p-2 pl-8 text-gray-100 transition-all outline-none placeholder:text-gray-100 focus:border-none focus:ring-1 focus:ring-gray-100/50 focus:outline-none"
+      type="search"
+      placeholder="Buscar..."
+      aria-label="Buscar películas"
+    />
+  </div>
+</form>
+
+<script>
+  import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
+
+  dinamicPagesMovies()
+</script>

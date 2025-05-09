@@ -1,7 +1,7 @@
 ---
 import { movieTrailer } from '@/utils/movieTrailer.js'
 
-const { videoId, backgroundImage, trailerTitle } = Astro.props
+const { videoId, trailerTitle } = Astro.props
 
 let movieTrailerKey = await movieTrailer(videoId)
 ---
