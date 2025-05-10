@@ -10,15 +10,15 @@ const { movie } = Astro.props
     >
       {movie.title}
     </span>
-    <span
-      class="text-shadow mb-1 block text-justify text-base text-pretty text-white lg:text-base lg:font-medium"
+    <p
+      class="text-shadow prose mb-1 block text-justify text-base text-pretty text-white lg:text-base lg:font-medium"
     >
       {movie.overview}
-    </span>
+    </p>
   </div>
   <div class="flex gap-6">
     <span class="font-bold text-zinc-300">
-      Puntuacion: {Math.round(movie.vote_average)}
+      Puntuación: {Math.round(movie.vote_average)}
     </span>
 
     <span class="font-bold text-zinc-300">

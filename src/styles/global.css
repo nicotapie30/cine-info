@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 @plugin '@midudev/tailwind-animations';
 @import '@fontsource/poppins/100.css';
 @import '@fontsource/poppins/200.css';
