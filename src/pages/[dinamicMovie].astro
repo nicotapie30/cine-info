@@ -3,17 +3,23 @@ import Layout from '@/layouts/Layout.astro'
 import { getMoviesPaths } from '@/lib/getMoviesPaths.js'
 import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
 import { getAllMovies } from '@/lib/allMovies.js'
+import { requestsFilms } from '@/services/requests/requests-films'
+import { credits } from '@/lib/endpoints'
 import TrailerYoutube from '@/components/TrailerYoutube.astro'
 import DatesFilm from '@/components/DatesFilm.astro'
+import Cast from '@/components/Cast.astro'
+
+const { dinamicMovie } = Astro.params
 
 export const getStaticPaths = async () => {
   return await getMoviesPaths()
 }
 
-const { dinamicMovie } = Astro.params
-
 const movies = await getAllMovies()
 const movie = movies.find((movie) => movie.title === dinamicMovie)
+
+// Obtener la información de la película desde el id dinámico
+const creditsMovie = await requestsFilms(credits(movie.id))
 ---
 
 <Layout title={`Cine info - ${movie.title}`} description={movie.overview}>
@@ -28,7 +34,7 @@ const movie = movies.find((movie) => movie.title === dinamicMovie)
           class="mask-fade-image-film animate-fade-in-down aspect-video h-auto w-[50%] rounded-lg"
         />
 
-        <DatesFilm movie={movie} />
+        <DatesFilm movie={movie} credits={creditsMovie} />
       </section>
 
       <h4 class="animate-fade-in-up mt-20 text-center text-5xl font-bold text-white">
@@ -37,6 +43,8 @@ const movie = movies.find((movie) => movie.title === dinamicMovie)
       <div class="mx-auto my-0 mt-16 w-[60%] overflow-hidden">
         <TrailerYoutube videoId={movie.id} trailerTitle={movie.title} />
       </div>
+
+      <Cast credits={creditsMovie} />
     </article>
   </main>
 </Layout>

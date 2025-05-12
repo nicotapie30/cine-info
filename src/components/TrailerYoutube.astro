@@ -6,9 +6,13 @@ const { videoId, trailerTitle } = Astro.props
 let movieTrailerKey = await movieTrailer(videoId)
 ---
 
-<div class="relative aspect-video h-auto w-full rounded-lg bg-cover bg-center">
-  <iframe
-    class="trailer absolute inset-0 h-full w-full rounded-lg"
-    src=`https://www.youtube.com/embed/${movieTrailerKey}`
-    title={`Reproducir trailer de ${trailerTitle}`}></iframe>
+<div class="bg-dark-secondary/95 rounded-lg p-10">
+  <div class="relative aspect-video h-auto w-full rounded-lg bg-cover bg-center">
+    <iframe
+      class="trailer absolute inset-0 h-full w-full rounded-lg"
+      src=`https://www.youtube.com/embed/${movieTrailerKey}`
+      title={`Reproducir trailer de ${trailerTitle}`}
+    >
+    </iframe>
+  </div>
 </div>
