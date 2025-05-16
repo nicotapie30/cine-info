@@ -1,15 +1,19 @@
 ---
+import FilteredDinamicsMovies from '@/components/FilteredDinamicsMovies.astro'
 import InputSearch from './search/InputSearch.astro'
 ---
 
 <header
-  class="fixed top-0 z-10 flex w-full items-center justify-between bg-gradient-to-b from-gray-900 to-transparent px-6 py-4 text-white transition-all"
+  class="fixed top-0 z-10 flex h-30 w-full items-center justify-between bg-gradient-to-b from-gray-900 to-transparent px-6 py-4 text-white transition-all"
 >
   <a href="/" class="link-home">
     <img class="h-16 w-auto" src="/images/cine_logo-big.webp" alt="Logo de cine Info" />
   </a>
 
-  <InputSearch />
+  <div class="relative flex w-60 flex-col gap-2">
+    <InputSearch />
+    <FilteredDinamicsMovies />
+  </div>
 </header>
 
 <style>

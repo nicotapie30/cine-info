@@ -7,15 +7,41 @@ export const dinamicPagesMovies = () => {
   const searchInput = document.querySelector('.input-search')
   const searchMovie = document.querySelector('.search-movie') // Resultados de búsqueda en index.astro
   const popularMovies = document.querySelector('.popular-movies') // Resultados de búsqueda en PosterPopularMovies.astro
+  const filteredDinamicMovies = document.querySelector('.filtered-dinamic-movies') // resultados de búsqueda en FilteredDinamicsMovies.astro
+  const filteredLinkMovies = document.querySelector('.filtered-link-movies')
 
   // Evento del input Search
   searchInput.addEventListener('input', (e) => {
     const target = e.target
     const searchValue = target.value.toLowerCase()
-    popularMovies.classList.add('hidden')
 
+    if (popularMovies) popularMovies.classList.add('hidden')
+
+    // Datos dinámicos debajo del input
     const filteredMovies = movies.filter((movie) => movie.title.toLowerCase().includes(searchValue))
 
+    filteredDinamicMovies.classList.remove('opacity-0')
+
+    console.log(filteredMovies)
+    filteredDinamicMovies.innerHTML = filteredMovies
+      .map((movies) => {
+        return `          <ul class="w-full h-auto">
+                            <div
+                              onclick="window.location.href='/${movies.title}'"
+                              class="filtered-link-movies pointer-events-auto w-full h-full inline cursor-pointer rounded-lg bg-transparent text-base text-white transition-all duration-200"
+                              > 
+                              <li class="flex gap-2 h-full w-full border  border-transparent items-center hover:border hover:border-zinc-300 rounded-lg hover:bg-gray-700/60 hover:scale-105 transition-all duration-200">
+                                <div class="w-full h-full object-center">
+                                  <img src=${IMAGES_PATH}${movies.poster_path} class="filtered-img-movies h-full w-auto rounded-lg" />           
+                                </div>
+                                <p class="w-full min-w-[70%]">${movies.title}</p>
+                              </li>
+                            </div>
+                          </ul>`
+      })
+      .join('')
+
+    // Datos filtrados al section del index
     if (searchValue.length > 0) {
       searchMovie.innerHTML = filteredMovies
         .map((movie) => {
@@ -55,19 +81,16 @@ export const dinamicPagesMovies = () => {
     } else {
       searchMovie.innerHTML = ''
       popularMovies.classList.remove('hidden')
+      filteredDinamicMovies.classList.add('opacity-0')
     }
   })
 
+  // Ir al inicio
   const a = document.querySelector('.link-home')
 
-  // Evento del enlace "Ver más"
   a.addEventListener('click', (e) => {
     e.preventDefault()
     window.history.pushState({}, '', '/')
-    window.location.reload()
-  })
-
-  window.addEventListener('popstate', () => {
     window.location.reload()
   })
 
