@@ -1,0 +1,64 @@
+---
+import Layout from '@/layouts/Layout.astro'
+---
+
+<Layout
+  title="Cine Info - Sobre nosotros"
+  description="Sobre nosotros"
+  showHeader={false}
+  showFooter={false}
+>
+  <main class="relative grid h-dvh bg-[url(images/Background_cine.webp)] px-18 py-10 pt-24">
+    <div class="bg-dark-secondary/95 absolute inset-0 h-full w-full overflow-y-scroll shadow-2xl">
+      <h1 class="animate-fade-in mt-30 mb-20 text-center text-5xl font-bold text-white">
+        Política y Privacidad
+      </h1>
+      <ul class="absolute flex flex-col gap-4">
+        <li class="animate-fade-in ml-10 text-xl text-white">
+          - Política de Privacidad Última actualización: <strong class="text-white"
+            >19/05/2025</strong
+          >
+        </li>
+        <li class="prose animate-fade-in ml-10 text-xl text-white">
+          - Tu privacidad es importante para nosotros. En Cine Info no solicitamos datos personales
+          a los usuarios ni requerimos registro para acceder a la información disponible.
+        </li>
+        <li class="prose animate-fade-in ml-10 text-xl text-white">
+          - Cuando navegás por Cine Info, se puede recopilar información de forma automática a
+          través de herramientas como Google Analytics
+        </li>
+        <ul class="animate-fade-in ml-10 text-xl text-white">
+          <li class="ml-16 list-disc">Dirección IP (anonimizada)</li>
+          <li class="ml-16 list-disc">Tipo de navegador y sistema operativo</li>
+          <li class="ml-16 list-disc">Páginas visitadas y tiempo de navegación</li>
+        </ul>
+        <li class="prose animate-fade-in ml-10 text-xl text-white">
+          - Esta información se utiliza exclusivamente con fines estadísticos para mejorar el
+          funcionamiento del sitio.
+        </li>
+        <li class="prose animate-fade-in ml-10 text-xl text-white">
+          - Cine Info puede utilizar <strong class="text-white">cookies</strong> para analizar el uso
+          del sitio y ofrecer una mejor experiencia de navegación. Podés gestionar el uso de <strong
+            class="text-white">cookies</strong
+          > desde la configuración de tu navegador
+        </li>
+        <li class="prose animate-fade-in ml-10 text-xl text-white">
+          - Este sitio puede contener enlaces a tráilers u otras plataformas externas<br />
+          <strong class="text-white">No somos responsables</strong> por el contenido ni por las prácticas
+          de privacidad de esos sitios.
+        </li>
+        <li class="prose animate-fade-in ml-10 text-xl text-white">
+          - Esta política puede actualizarse ocasionalmente<br />
+          Te recomendamos <strong class="text-white">revisarla periódicamente</strong> para estar al
+          tanto de posibles cambios.
+        </li>
+        <li class="prose animate-fade-in mb-10 ml-10 text-xl text-white">
+          - Para cualquier consulta sobre esta política, podés escribirnos a: nicoatapie@gmail.com
+          <a href="//mailto:nicoatapie@gmail.com" target="_blank " class="text-white"
+            >nicoatapie@gmail.com</a
+          >
+        </li>
+      </ul>
+    </div>
+  </main>
+</Layout>

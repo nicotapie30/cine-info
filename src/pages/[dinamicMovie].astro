@@ -22,7 +22,12 @@ const movie = movies.find((movie) => movie.title === dinamicMovie)
 const creditsMovie = await requestsFilms(credits(movie.id))
 ---
 
-<Layout title={`Cine info - ${movie.title}`} description={movie.overview}>
+<Layout
+  title={`Cine info - ${movie.title}`}
+  description={movie.overview}
+  showHeader={true}
+  showFooter={true}
+>
   <main class="relative bg-[url(images/Background_cine.webp)] px-18 py-10 pt-24">
     <div class="bg-dark-secondary/95 absolute inset-0 h-full w-full shadow-2xl"></div>
     <article class="relative p-4">
