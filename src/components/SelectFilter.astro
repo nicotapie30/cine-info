@@ -1,0 +1,189 @@
+---
+import { genresMovies } from '@/lib/endpoints'
+import { requestsFilms } from '@/services/requests/requests-films'
+import ArrowRight from '@/assets/svg/ArrowRight.svg'
+import ArrowLeft from '@/assets/svg/ArrowLeft.svg'
+
+const response = await requestsFilms(genresMovies)
+const genres = await response.genres
+---
+
+<article class="w-full">
+  <select
+    name="movie"
+    id="movie"
+    class="select-filter-movie ml-10 block rounded-lg border bg-gray-700 p-2 text-sm text-white placeholder-gray-400 outline-0 transition-all duration-200 ease-in-out hover:bg-gray-700/90 focus:border-blue-500 focus:ring-blue-500"
+  >
+    <option value="_">Filtrar</option>
+    {
+      genres.map((genre) => {
+        return <option value={genre.id}>{genre.name}</option>
+      })
+    }
+  </select>
+
+  <div class="container-list relative mt-10 flex w-full flex-col items-center px-10">
+    <div class="container-arrows flex items-center gap-6 opacity-0">
+      <button class="button-left"
+        ><ArrowLeft
+          class="arrow-left cursor-pointer text-gray-600 transition-all hover:scale-105 hover:text-gray-500"
+          aria-label="Flecha hacia la izquierda"
+        /></button
+      >
+      <button class="button-right"
+        ><ArrowRight
+          class="arrow-right cursor-pointer text-gray-600 transition-all hover:scale-105 hover:text-gray-500"
+          aria-label="Flecha hacia la derecha"
+        /></button
+      >
+    </div>
+    <ul
+      class="list-movie absolute inset-0 mt-20 flex w-full snap-x scroll-pl-6 gap-4 overflow-x-scroll px-10"
+    >
+    </ul>
+  </div>
+</article>
+
+<script>
+  import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
+  import { getAllMovies } from '@/lib/allMovies'
+  import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
+
+  const select = document.querySelector('#movie') as HTMLSelectElement
+  const ul = document.querySelector('.list-movie')
+  const options = select.options
+  const popularMovies = document.querySelector('.popular-movies') // Resultados de búsqueda en PosterPopularMovies.astro
+  const containerArrows = document.querySelector('.container-arrows') // Contenedor de flechas
+  const containerList = document.querySelector('.container-list') // Contenedor de la lista de películas
+  const arrowLeft = document.querySelector('.arrow-left') // Flecha izquierda
+  const arrowRight = document.querySelector('.arrow-right') // Flecha derecha
+  const buttonLeft = document.querySelector('.button-left') // Botón flecha izquierda
+  const buttonRight = document.querySelector('.button-right') // Botón flecha derecha
+
+  const movies = await getAllMovies()
+
+  select.addEventListener('change', (e) => {
+    const selectedValue = e.target.value
+    const selectedOption = Array.from(options).find((option) => option.value === selectedValue)
+
+    if (popularMovies) popularMovies.classList.add('hidden')
+    if (selectedValue === '_') {
+      ul.innerHTML = ''
+      popularMovies.classList.remove('hidden')
+      containerArrows.classList.add('opacity-0')
+      containerList.classList.remove('h-[31rem]')
+    }
+
+    if (selectedOption) {
+      const selectedText = selectedOption.textContent
+      const filteredMovies = movies.filter((movie) => {
+        return movie.genre_ids.includes(parseInt(selectedValue))
+      })
+
+      ul.innerHTML = ''
+      filteredMovies.map((movie) => {
+        const li = document.createElement('li')
+        li.className = 'flex justify-center snap-center snap-always'
+        li.setAttribute('aria-label', `Pelicula ${movie.title}`)
+        li.innerHTML = `                      
+                        <div
+                            class="group contenedor relative h-[23rem] w-[18rem] overflow-hidden rounded-lg border border-transparent shadow-md transition-all duration-300 focus-within:border focus-within:border-zinc-400 hover:border hover:border-zinc-400"
+                            tabindex="0"
+                            >
+                            <img
+                                src=${IMAGES_PATH}${movie.poster_path}
+                                alt="${movie.title}"
+                                class="contenedor animate-fade-in animate-duration-300 group-hover:mask-fade-name absolute inset-0 h-full w-full rounded-lg transition-all duration-300 group-focus-within:scale-95 group-hover:scale-95"
+                                loading="lazy"
+                                fetchpriority="low"
+                                decoding="async"
+                            />
+                            <div
+                                class="pointer-events-none absolute bottom-2 left-1.5 opacity-0 transition-all group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100"
+                            >
+                                <span
+                                class="text-shadow mb-0.5 block text-xl font-bold text-pretty text-white">${movie.title}</span
+                                >
+                                <a
+                                class="pointer-events-auto inline-block cursor-pointer rounded-lg border-2 border-transparent bg-gray-500/50 px-4 py-2 text-white transition-all duration-100 hover:scale-105 hover:border-white hover:bg-gray-600/50 focus:scale-105 focus:border-white focus:bg-gray-600/50"
+                                href="/${movie.title}"
+                                tabindex="0"
+                                >
+                                Ver más
+                                </a>
+                            </div>
+                        </div>
+      `
+        ul.appendChild(li)
+        containerArrows.classList.remove('opacity-0')
+        containerList.classList.add('h-[31rem]')
+      })
+    } else {
+      popularMovies.classList.remove('hidden')
+      ul.innerHTML = ''
+      containerArrows.classList.add('opacity-0')
+      containerList.classList.remove('h-[31rem]')
+    }
+  })
+
+  // Dinamismo de las flechas
+  arrowRight.addEventListener('click', () => {
+    const scrollAmount = ul.scrollWidth / ul.children.length
+    ul.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    })
+  })
+
+  arrowLeft.addEventListener('click', () => {
+    const scrollAmount = ul.scrollWidth / ul.children.length
+    ul.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth'
+    })
+  })
+
+  // Accecibilidad de flechas
+  buttonLeft.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowLeft') {
+      const scrollAmount = ul.scrollWidth / ul.children.length
+      ul.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+      })
+    }
+  })
+
+  buttonRight.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') {
+      const scrollAmount = ul.scrollWidth / ul.children.length
+      ul.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      })
+    }
+  })
+
+  dinamicPagesMovies()
+</script>
+
+<style>
+  .list-movie {
+    scrollbar-width: thin;
+    scrollbar-color: #4b5563 #1f2937;
+  }
+  .list-movie::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .list-movie::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 10px;
+  }
+  .list-movie::-webkit-scrollbar-track {
+    background-color: #1f2937;
+  }
+  .list-movie::-webkit-scrollbar-button {
+    display: none;
+  }
+</style>

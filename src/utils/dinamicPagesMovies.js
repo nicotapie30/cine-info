@@ -7,8 +7,7 @@ export const dinamicPagesMovies = () => {
   const searchInput = document.querySelector('.input-search')
   const searchMovie = document.querySelector('.search-movie') // Resultados de búsqueda en index.astro
   const popularMovies = document.querySelector('.popular-movies') // Resultados de búsqueda en PosterPopularMovies.astro
-  const filteredDinamicMovies = document.querySelector('.filtered-dinamic-movies') // resultados de búsqueda en FilteredDinamicsMovies.astro
-  const filteredLinkMovies = document.querySelector('.filtered-link-movies')
+  const filteredDinamicMovies = document.querySelector('.filtered-dinamic-movies') // Resultados de búsqueda en FilteredDinamicsMovies.astro
 
   // Evento del input Search
   searchInput.addEventListener('input', (e) => {

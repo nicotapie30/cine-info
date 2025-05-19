@@ -2,11 +2,16 @@
 import Layout from '../layouts/Layout.astro'
 import Hero from '@/sections/Hero.astro'
 import PosterPopularMovies from '@/sections/PosterPopularMovies.astro'
+import SelectFilter from '@/components/SelectFilter.astro'
 ---
 
 <Layout title="Cine Info" showHeader={true} showFooter={true}>
   <Hero />
+
+  <SelectFilter />
+
   <div class="search-movie flex flex-wrap gap-6 p-6"></div>
+
   <PosterPopularMovies />
 </Layout>
 
