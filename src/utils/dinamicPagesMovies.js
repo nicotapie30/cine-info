@@ -25,17 +25,20 @@ export const dinamicPagesMovies = () => {
     filteredDinamicMovies.innerHTML = filteredMovies
       .map((movies) => {
         return `          <ul class="w-full h-auto">
-                            <div
-                              onclick="window.location.href='/${movies.title}'"
-                              class="filtered-link-movies pointer-events-auto w-full h-full inline cursor-pointer rounded-lg bg-transparent text-base text-white transition-all duration-200"
-                              > 
-                              <li class="flex gap-2 h-full w-full border  border-transparent items-center hover:border hover:border-zinc-300 rounded-lg hover:bg-gray-700/60 hover:scale-105 transition-all duration-200">
-                                <div class="w-full h-full object-center">
-                                  <img src=${IMAGES_PATH}${movies.poster_path} class="filtered-img-movies h-full w-auto rounded-lg" />           
-                                </div>
-                                <p class="w-full min-w-[70%]">${movies.title}</p>
-                              </li>
-                            </div>
+                            <button
+                            onclick="window.location.href='/${movies.title}'" 
+                            aria-label="Película ${movies.title}">
+                              <div
+                                class="filtered-link-movies pointer-events-auto w-full h-full inline cursor-pointer rounded-lg bg-transparent text-base text-white transition-all duration-200"
+                                > 
+                                <li class="flex gap-2 h-full w-full border  border-transparent items-center hover:border hover:border-zinc-300 rounded-lg hover:bg-gray-700/60 hover:scale-105 transition-all duration-200">
+                                  <div class="w-full h-full object-center">
+                                    <img src=${IMAGES_PATH}${movies.poster_path} class="filtered-img-movies h-full w-auto rounded-lg" />           
+                                  </div>
+                                  <p class="w-full min-w-[70%]">${movies.title}</p>
+                                </li>
+                              </div>
+                            </button>
                           </ul>`
       })
       .join('')
