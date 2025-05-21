@@ -15,12 +15,10 @@ import Github from '@/assets/svg/Github.svg'
         class="mb-6 flex flex-wrap items-center text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"
       >
         <li>
-          <a href="/About" class="underline-from-left relative me-4 md:me-6">About</a>
+          <a href="/About" class="underline-left relative me-4 md:me-6">About</a>
         </li>
         <li>
-          <a href="/PrivacyPolicy" class="underline-from-left relative me-4 md:me-6"
-            >Privacy Policy</a
-          >
+          <a href="/PrivacyPolicy" class="underline-left relative me-4 md:me-6">Privacy Policy</a>
         </li>
       </ul>
     </div>
@@ -30,7 +28,7 @@ import Github from '@/assets/svg/Github.svg'
         >© 2025 <a
           href="https://www.linkedin.com/in/nicolasatapiedev30"
           target="_blank"
-          class="underline-from-left relative">Nicolás Alejandro Tapié</a
+          class="underline-left relative">Nicolás Alejandro Tapié</a
         >. Todos los derechos reservados.</span
       >
       <div class="flex items-center gap-4">
@@ -59,20 +57,3 @@ import Github from '@/assets/svg/Github.svg'
     </div>
   </div>
 </footer>
-
-<style>
-  .underline-from-left::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 0.5px;
-    bottom: 0;
-    left: 0;
-    background-color: #fff;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .underline-from-left:hover::after {
-    width: 100%;
-  }
-</style>

@@ -57,3 +57,19 @@
     linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
   mask-composite: intersect;
 }
+
+@utility underline-left {
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 0.5px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+  }
+  &:hover::after {
+    width: 100%;
+  }
+}

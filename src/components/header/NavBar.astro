@@ -4,28 +4,12 @@
   <nav>
     <ul>
       <li>
-        <a href="/Upcoming" class="upcoming relative text-base font-bold">Estrenos</a>
+        <a href="/Upcoming" class="upcoming underline-left relative text-base font-bold">Estrenos</a
+        >
       </li>
     </ul>
   </nav>
 </div>
-
-<style>
-  .upcoming::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 0.5px;
-    bottom: 0;
-    left: 0;
-    background-color: #fff;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .upcoming:hover::after {
-    width: 100%;
-  }
-</style>
 
 <script>
   const upcoming = document.querySelector('.upcoming')
