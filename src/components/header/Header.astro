@@ -1,6 +1,7 @@
 ---
 import FilteredDinamicsMovies from '@/components/FilteredDinamicsMovies.astro'
 import InputSearch from './search/InputSearch.astro'
+import NavBar from './NavBar.astro'
 ---
 
 <header
@@ -9,6 +10,8 @@ import InputSearch from './search/InputSearch.astro'
   <a href="/" class="link-home" aria-label="Ir al Inicio">
     <img class="h-16 w-auto" src="/images/cine_logo-big.webp" alt="Logo de cine Info" />
   </a>
+
+  <NavBar />
 
   <div class="relative flex w-60 flex-col gap-2">
     <InputSearch />

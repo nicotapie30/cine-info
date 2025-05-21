@@ -1,0 +1,11 @@
+---
+import Layout from '@/layouts/Layout.astro'
+---
+
+<Layout title="Cine Info - Estrenos" description="Próximos estrenos de películas" />
+
+<script>
+  import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
+
+  dinamicPagesMovies()
+</script>

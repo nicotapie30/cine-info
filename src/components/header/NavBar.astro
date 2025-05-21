@@ -1,0 +1,39 @@
+<div
+  class="group mask-fade-sides-bottom absolute top-0 left-[50%] flex h-16 w-[80rem] -translate-x-[50%] items-center justify-center rounded-b-md border-0 bg-gray-600/10 py-2 backdrop-blur-sm transition-all duration-300 ease-in-out hover:bg-gray-600/20"
+>
+  <nav>
+    <ul>
+      <li>
+        <a href="/Upcoming" class="upcoming relative text-base font-bold">Estrenos</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<style>
+  .upcoming::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 0.5px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .upcoming:hover::after {
+    width: 100%;
+  }
+</style>
+
+<script>
+  const upcoming = document.querySelector('.upcoming')
+
+  upcoming.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    window.history.pushState({}, '', '/Upcoming')
+    window.location.reload()
+  })
+</script>

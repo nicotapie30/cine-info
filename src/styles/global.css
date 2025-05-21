@@ -45,3 +45,15 @@
 @utility mask-fade-name {
   mask-image: linear-gradient(to bottom, #0c121e 50%, transparent 100%);
 }
+
+@utility mask-fade-sides-bottom {
+  -webkit-mask-image:
+    linear-gradient(to top, transparent 0%, black 20%),
+    linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+  -webkit-mask-composite: destination-in;
+
+  mask-image:
+    linear-gradient(to top, transparent 0%, black 20%),
+    linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+  mask-composite: intersect;
+}
