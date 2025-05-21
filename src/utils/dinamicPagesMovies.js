@@ -116,4 +116,13 @@ export const dinamicPagesMovies = () => {
       }
     }
   })
+
+  searchInput.addEventListener('keyup', (e) => {
+    if (e.key === 'Delete') {
+      e.preventDefault()
+      if (searchValue.length === 0) {
+        filteredDinamicMovies.classList.add('opacity-0')
+      }
+    }
+  })
 }

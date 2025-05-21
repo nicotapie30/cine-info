@@ -168,21 +168,24 @@ const genres = await response.genres
 </script>
 
 <style>
-  .list-movie {
-    scrollbar-width: thin;
-    scrollbar-color: #4b5563 #1f2937;
-  }
   .list-movie::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    appearance: none;
+  }
+  .list-movie::-webkit-scrollbar:horizontal {
+    height: 10px;
+  }
+  .list-movie::-webkit-scrollbar:vertical {
+    width: 4px;
   }
   .list-movie::-webkit-scrollbar-thumb {
     background-color: #4b5563;
-    border-radius: 10px;
+    border-radius: 20px;
   }
   .list-movie::-webkit-scrollbar-track {
     background-color: #1f2937;
+    border-radius: 10px;
   }
+  .list-movie::-webkit-scrollbar-button:increment,
   .list-movie::-webkit-scrollbar-button {
     display: none;
   }
