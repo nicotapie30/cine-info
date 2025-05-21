@@ -14,7 +14,13 @@ export const dinamicPagesMovies = () => {
     const target = e.target
     const searchValue = target.value.toLowerCase()
 
-    if (popularMovies) popularMovies.classList.add('hidden')
+    if (searchValue.length === 0) {
+      filteredDinamicMovies.innerHTML = ''
+      filteredDinamicMovies.classList.add('opacity-0')
+      searchMovie.innerHTML = ''
+      if (popularMovies) popularMovies.classList.remove('hidden')
+      return
+    }
 
     // Datos dinámicos debajo del input
     const filteredMovies = movies.filter((movie) => movie.title.toLowerCase().includes(searchValue))
