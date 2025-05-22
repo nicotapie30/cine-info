@@ -1,23 +1,40 @@
+---
+import Link from './Link.astro'
+const { pathname } = Astro.url
+---
+
 <div
   class="group mask-fade-sides-bottom absolute top-0 left-[50%] flex h-16 w-[80rem] -translate-x-[50%] items-center justify-center rounded-b-md border-0 bg-gray-600/10 py-2 backdrop-blur-sm transition-all duration-300 ease-in-out hover:bg-gray-600/20"
 >
   <nav>
     <ul>
       <li>
-        <a href="/Upcoming" class="upcoming underline-left relative text-base font-bold">Estrenos</a
-        >
+        <div>
+          <Link
+            href="/"
+            content="Inicio"
+            className={`link mask-fade-sides-bottom relative px-10 pt-20 pb-6 font-bold ${pathname !== '/' ? 'underline-left' : ''} ${pathname === '/' ? 'bg-gray-700/20 underline' : ''}`}
+          />
+
+          <Link
+            href="/Upcoming"
+            content="Estrenos"
+            className={`link mask-fade-sides-bottom relative px-10 pt-20 pb-6 font-bold ${pathname !== '/Upcoming' ? 'underline-left' : ''} ${pathname === '/Upcoming' ? 'bg-gray-700/20 underline' : ''}`}
+          />
+        </div>
       </li>
     </ul>
   </nav>
 </div>
 
 <script>
-  const upcoming = document.querySelector('.upcoming')
+  const links = document.querySelectorAll('.link') as NodeListOf<HTMLAnchorElement>
 
-  upcoming.addEventListener('click', (e) => {
-    e.preventDefault()
-
-    window.history.pushState({}, '', '/Upcoming')
-    window.location.reload()
+  links.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
+      window.history.pushState({}, '', link.href)
+      window.location.reload()
+    })
   })
 </script>

@@ -1,0 +1,11 @@
+---
+const { href, content, className } = Astro.props
+---
+
+<a href={href} class={className}>{content}</a>
+
+<script>
+  import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
+
+  dinamicPagesMovies()
+</script>

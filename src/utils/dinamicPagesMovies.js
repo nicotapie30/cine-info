@@ -27,7 +27,6 @@ export const dinamicPagesMovies = () => {
 
     filteredDinamicMovies.classList.remove('opacity-0')
 
-    console.log(filteredMovies)
     filteredDinamicMovies.innerHTML = filteredMovies
       .map((movies) => {
         return `          <ul class="w-full h-auto">
@@ -48,6 +47,7 @@ export const dinamicPagesMovies = () => {
                           </ul>`
       })
       .join('')
+    popularMovies.classList.add('hidden')
 
     // Datos filtrados al section del index
     if (searchValue.length > 0) {
