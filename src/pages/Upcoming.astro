@@ -3,7 +3,6 @@ import Layout from '@/layouts/Layout.astro'
 import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
 import { requestsFilms } from '@/services/requests/requests-films'
 import { upComingMovies } from '@/lib/endpoints'
-import PosterMovie from '@/components/PosterMovie.astro'
 
 const upcomingMovies = await requestsFilms(upComingMovies)
 

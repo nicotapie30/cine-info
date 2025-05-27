@@ -28,13 +28,7 @@ const { pathname } = Astro.url
 </div>
 
 <script>
-  const links = document.querySelectorAll('.link') as NodeListOf<HTMLAnchorElement>
+  import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
 
-  links.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault()
-      window.history.pushState({}, '', link.href)
-      window.location.reload()
-    })
-  })
+  dinamicPagesMovies()
 </script>

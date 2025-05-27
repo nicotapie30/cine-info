@@ -7,7 +7,8 @@ const endpoints = {
   movieDetails: 'movie',
   trendingMovies: 'trending/movie/day',
   credits: (movie_id) => `movie/${movie_id}/credits`,
-  genresMovies: 'genre/movie/list'
+  genresMovies: 'genre/movie/list',
+  similarMovies: (movie_id) => `movie/${movie_id}/similar`
 }
 
 export const {
@@ -19,5 +20,6 @@ export const {
   trendingMovies,
   recomendationsMovies,
   credits,
-  genresMovies
+  genresMovies,
+  similarMovies
 } = endpoints
