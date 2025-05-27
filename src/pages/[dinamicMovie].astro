@@ -46,7 +46,13 @@ const creditsMovie = await requestsFilms(credits(movie.id))
         Ver trailer
       </h4>
       <div class="mx-auto my-0 mt-16 w-[60%] overflow-hidden">
-        <TrailerYoutube videoId={movie.id} trailerTitle={movie.title} />
+        {
+          movie.id === undefined || movie.id === null ? (
+            <p>Trailer no disponible en ésta película</p>
+          ) : (
+            <TrailerYoutube videoId={movie.id} trailerTitle={movie.title} />
+          )
+        }
       </div>
 
       <Cast credits={creditsMovie} />

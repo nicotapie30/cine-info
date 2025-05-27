@@ -13,13 +13,13 @@ const { pathname } = Astro.url
           <Link
             href="/"
             content="Inicio"
-            className={`link mask-fade-sides-bottom relative px-10 pt-20 pb-6 font-bold ${pathname !== '/' ? 'underline-left' : ''} ${pathname === '/' ? 'bg-gray-700/20 underline' : ''}`}
+            className={`link mask-fade-sides-bottom relative px-10 pt-20 pb-6 font-bold ${pathname !== '/' ? 'underline-left' : ''} ${pathname === '/' ? 'bg-gray-700/40 underline' : ''}`}
           />
 
           <Link
             href="/Upcoming"
             content="Estrenos"
-            className={`link mask-fade-sides-bottom relative px-10 pt-20 pb-6 font-bold ${pathname !== '/Upcoming' ? 'underline-left' : ''} ${pathname === '/Upcoming' ? 'bg-gray-700/20 underline' : ''}`}
+            className={`link mask-fade-sides-bottom relative px-10 pt-20 pb-6 font-bold ${pathname !== '/Upcoming' ? 'underline-left' : ''} ${pathname === '/Upcoming' ? 'bg-gray-700/40 underline' : ''}`}
           />
         </div>
       </li>

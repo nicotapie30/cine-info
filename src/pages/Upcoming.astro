@@ -1,5 +1,13 @@
 ---
 import Layout from '@/layouts/Layout.astro'
+import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
+import { requestsFilms } from '@/services/requests/requests-films'
+import { upComingMovies } from '@/lib/endpoints'
+import PosterMovie from '@/components/PosterMovie.astro'
+
+const upcomingMovies = await requestsFilms(upComingMovies)
+
+const movies = upcomingMovies.results
 ---
 
 <Layout
@@ -7,10 +15,37 @@ import Layout from '@/layouts/Layout.astro'
   description="Próximos estrenos de películas"
   showHeader={true}
   showFooter={true}
-/>
+>
+  <h1 class="animate-fade-in-up mt-36 text-center text-6xl font-bold text-white">Estrenos</h1>
+  <section
+    class="mt-20 grid h-auto w-full grid-cols-1 place-items-center gap-6 overflow-hidden p-4 md:grid-cols-3 lg:grid-flow-dense lg:grid-cols-4"
+  >
+    {
+      movies.map((movie) => {
+        return (
+          <div class="animate-fade-in relative aspect-video">
+            <img
+              src={`${IMAGES_PATH}${movie.backdrop_path}`}
+              alt={movie.title}
+              class="mask-fade-bottom animate-fade-in animate-delay-200 aspect-video min-w-full rounded-md object-center transition-all hover:scale-105"
+              loading="lazy"
+              fetchpriority="low"
+              decoding="async"
+            />
+            <div class="absolute bottom-4 left-1">
+              <span class="text-shadow mb-0.5 block text-xl text-pretty text-white lg:font-bold">
+                {movie.title}
+              </span>
+            </div>
+          </div>
+        )
+      })
+    }
+  </section>
 
-<script>
-  import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
+  <script>
+    import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
 
-  dinamicPagesMovies()
-</script>
+    dinamicPagesMovies()
+  </script>
+</Layout>
