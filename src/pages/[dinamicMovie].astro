@@ -5,9 +5,11 @@ import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
 import { getAllMovies } from '@/lib/allMovies.js'
 import { requestsFilms } from '@/services/requests/requests-films'
 import { credits } from '@/lib/endpoints'
+import { similarMovies } from '@/lib/endpoints'
 import TrailerYoutube from '@/components/TrailerYoutube.astro'
 import DatesFilm from '@/components/DatesFilm.astro'
 import Cast from '@/components/Cast.astro'
+import SimilarsMovies from '@/sections/movies/SimilarsMovies.astro'
 
 const { dinamicMovie } = Astro.params
 
@@ -20,6 +22,7 @@ const movie = movies.find((movie) => movie.title === dinamicMovie)
 
 // Obtener la información de la película desde el id dinámico
 const creditsMovie = await requestsFilms(credits(movie.id))
+const similarMovie = await requestsFilms(similarMovies(movie.id))
 ---
 
 <Layout
@@ -55,13 +58,15 @@ const creditsMovie = await requestsFilms(credits(movie.id))
         }
       </div>
 
+      <SimilarsMovies similars={similarMovie} />
+
       <Cast credits={creditsMovie} />
     </article>
   </main>
+
+  <script>
+    import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
+
+    dinamicPagesMovies()
+  </script>
 </Layout>
-
-<script>
-  import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
-
-  dinamicPagesMovies()
-</script>
