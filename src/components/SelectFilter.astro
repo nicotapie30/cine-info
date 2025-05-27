@@ -128,7 +128,7 @@ const genres = await response.genres
 
   // Dinamismo de las flechas
   arrowRight.addEventListener('click', () => {
-    const scrollAmount = ul.scrollWidth / ul.children.length
+    const scrollAmount = (ul.scrollWidth / ul.children.length) * 2
     ul.scrollBy({
       left: scrollAmount,
       behavior: 'smooth'
@@ -136,7 +136,7 @@ const genres = await response.genres
   })
 
   arrowLeft.addEventListener('click', () => {
-    const scrollAmount = ul.scrollWidth / ul.children.length
+    const scrollAmount = (ul.scrollWidth / ul.children.length) * 2
     ul.scrollBy({
       left: -scrollAmount,
       behavior: 'smooth'
@@ -146,7 +146,7 @@ const genres = await response.genres
   // Accecibilidad de flechas
   buttonLeft.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowLeft') {
-      const scrollAmount = ul.scrollWidth / ul.children.length
+      const scrollAmount = (ul.scrollWidth / ul.children.length) * 2
       ul.scrollBy({
         left: -scrollAmount,
         behavior: 'smooth'
@@ -156,7 +156,7 @@ const genres = await response.genres
 
   buttonRight.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') {
-      const scrollAmount = ul.scrollWidth / ul.children.length
+      const scrollAmount = (ul.scrollWidth / ul.children.length) * 2
       ul.scrollBy({
         left: scrollAmount,
         behavior: 'smooth'
@@ -172,7 +172,7 @@ const genres = await response.genres
     appearance: none;
   }
   .list-movie::-webkit-scrollbar:horizontal {
-    height: 10px;
+    height: 9px;
   }
   .list-movie::-webkit-scrollbar:vertical {
     width: 4px;

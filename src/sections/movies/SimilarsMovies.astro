@@ -1,11 +1,27 @@
 ---
 import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
+import ArrowLeft from '@/assets/svg/ArrowLeft.svg'
+import ArrowRight from '@/assets/svg/ArrowRight.svg'
 
 const { similars } = Astro.props
 ---
 
 <article class="relative mt-20 flex w-full flex-col items-center gap-4">
   <h4 class="mb-10 text-5xl font-bold text-white">Películas similares</h4>
+  <div class="container-arrows flex items-center gap-6">
+    <button class="button-left"
+      ><ArrowLeft
+        class="arrow-left cursor-pointer text-gray-600 transition-all hover:scale-105 hover:text-gray-500"
+        aria-label="Flecha hacia la izquierda"
+      /></button
+    >
+    <button class="button-right"
+      ><ArrowRight
+        class="arrow-right cursor-pointer text-gray-600 transition-all hover:scale-105 hover:text-gray-500"
+        aria-label="Flecha hacia la derecha"
+      /></button
+    >
+  </div>
   <div
     class="similar-movies flex w-full snap-x snap-mandatory justify-start gap-4 overflow-x-scroll scroll-smooth px-4 py-4"
   >
@@ -49,7 +65,7 @@ const { similars } = Astro.props
     appearance: none;
   }
   .similar-movies::-webkit-scrollbar:horizontal {
-    height: 10px;
+    height: 9px;
   }
   .similar-movies::-webkit-scrollbar:vertical {
     width: 4px;
@@ -67,3 +83,48 @@ const { similars } = Astro.props
     display: none;
   }
 </style>
+
+<script is:inline>
+  const containerMovies = document.querySelector('.similar-movies') // Contenedor de películas similares
+  const arrowLeft = document.querySelector('.arrow-left') // Flecha izquierda
+  const arrowRight = document.querySelector('.arrow-right') // Flecha derecha
+  const buttonLeft = document.querySelector('.button-left') // Botón flecha izquierda
+  const buttonRight = document.querySelector('.button-right') // Botón flecha derecha
+
+  arrowRight.addEventListener('click', () => {
+    const scrollAmount = (containerMovies.scrollWidth / containerMovies.children.length) * 2.8
+    containerMovies.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    })
+  })
+
+  arrowLeft.addEventListener('click', () => {
+    const scrollAmount = (containerMovies.scrollWidth / containerMovies.children.length) * 2.8
+    containerMovies.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth'
+    })
+  })
+
+  // Accecibilidad de flechas
+  buttonLeft.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowLeft') {
+      const scrollAmount = (containerMovies.scrollWidth / containerMovies.children.length) * 2.8
+      containerMovies.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+      })
+    }
+  })
+
+  buttonRight.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') {
+      const scrollAmount = (containerMovies.scrollWidth / containerMovies.children.length) * 2.8
+      containerMovies.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      })
+    }
+  })
+</script>

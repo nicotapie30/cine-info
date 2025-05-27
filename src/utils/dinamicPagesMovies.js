@@ -8,7 +8,9 @@ export const dinamicPagesMovies = () => {
   const searchMovie = document.querySelector('.search-movie') // Resultados de búsqueda en index.astro
   const popularMovies = document.querySelector('.popular-movies') // Resultados de búsqueda en PosterPopularMovies.astro
   const filteredDinamicMovies = document.querySelector('.filtered-dinamic-movies') // Resultados de búsqueda en FilteredDinamicsMovies.astro
-  const links = document.querySelectorAll('.link')
+  const links = document.querySelectorAll('.link') // Enlaces de navegación de UpcomingMovies
+  const about = document.querySelector('.link-about') // Enlace de navegación de About
+  const privacyPolicy = document.querySelector('.link-privacy-policy') // Enlace de navegación de PrivacyPolicy
 
   // Evento del input Search
   searchInput.addEventListener('input', (e) => {
@@ -141,6 +143,18 @@ export const dinamicPagesMovies = () => {
         window.history.pushState({}, '', href)
         window.location.reload()
       }
+    })
+  })
+
+  about.addEventListener('click', (e) => {
+    window.addEventListener('popstate', () => {
+      window.location.reload()
+    })
+  })
+
+  privacyPolicy.addEventListener('click', (e) => {
+    window.addEventListener('popstate', () => {
+      window.location.reload()
     })
   })
 }
