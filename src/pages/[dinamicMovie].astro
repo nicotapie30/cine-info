@@ -10,6 +10,7 @@ import TrailerYoutube from '@/components/TrailerYoutube.astro'
 import DatesFilm from '@/components/DatesFilm.astro'
 import Cast from '@/components/Cast.astro'
 import SimilarsMovies from '@/sections/movies/SimilarsMovies.astro'
+import { genresMovies } from '@/lib/endpoints'
 
 const { dinamicMovie } = Astro.params
 
@@ -23,6 +24,14 @@ const movie = movies.find((movie) => movie.title === dinamicMovie)
 // Obtener la información de la película desde el id dinámico
 const creditsMovie = await requestsFilms(credits(movie.id))
 const similarMovie = await requestsFilms(similarMovies(movie.id))
+const genresIds = movie.genre_ids
+
+const genres = await requestsFilms(genresMovies)
+
+const genresNames = genres.genres
+  .filter((genre) => genresIds.includes(genre.id))
+  .map((genre) => genre.name)
+  .join(', ')
 ---
 
 <Layout
@@ -42,7 +51,7 @@ const similarMovie = await requestsFilms(similarMovies(movie.id))
           class="mask-fade-image-film animate-fade-in-down aspect-video h-auto w-[50%] rounded-lg"
         />
 
-        <DatesFilm movie={movie} credits={creditsMovie} />
+        <DatesFilm movie={movie} genres={genresNames} credits={creditsMovie} />
       </section>
 
       <h4 class="animate-fade-in-up mt-20 text-center text-5xl font-bold text-white">
@@ -68,5 +77,9 @@ const similarMovie = await requestsFilms(similarMovies(movie.id))
     import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
 
     dinamicPagesMovies()
+
+    window.addEventListener('popstate', () => {
+      window.location.reload()
+    })
   </script>
 </Layout>

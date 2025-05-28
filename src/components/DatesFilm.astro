@@ -1,5 +1,5 @@
 ---
-const { movie } = Astro.props
+const { movie, genres } = Astro.props
 ---
 
 <section class="animate-fade-in flex w-[40%] flex-col justify-between">
@@ -16,17 +16,25 @@ const { movie } = Astro.props
       {movie.overview}
     </p>
   </div>
-  <div class="flex gap-6">
-    <span class="font-bold text-zinc-300">
+  <div class="flex flex-col gap-6">
+    <span class="font-bold text-zinc-200">
       Puntuación: {Math.round(movie.vote_average)}
     </span>
 
-    <span class="font-bold text-zinc-300">
+    <span class="font-bold text-zinc-200">
       Opiniones: {movie.vote_count}
     </span>
 
-    <span class="font-bold text-zinc-300">
+    <span class="font-bold text-zinc-200">
       Fecha: {movie.release_date}
+    </span>
+
+    <span class="font-bold text-zinc-200">
+      Popularidad: {movie.popularity}
+    </span>
+
+    <span class="font-bold text-zinc-200">
+      Género: {genres}
     </span>
   </div>
 </section>

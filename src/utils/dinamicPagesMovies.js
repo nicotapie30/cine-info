@@ -146,13 +146,13 @@ export const dinamicPagesMovies = () => {
     })
   })
 
-  about.addEventListener('click', (e) => {
+  about.addEventListener('click', () => {
     window.addEventListener('popstate', () => {
       window.location.reload()
     })
   })
 
-  privacyPolicy.addEventListener('click', (e) => {
+  privacyPolicy.addEventListener('click', () => {
     window.addEventListener('popstate', () => {
       window.location.reload()
     })
