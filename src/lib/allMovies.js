@@ -14,8 +14,7 @@ export async function getAllMovies(language = 'es-ES', params = {}) {
 
   allMovies.push(...firstPage.results)
 
-  /*
-  for (let page = 2; page <= 3; page++) {
+  for (let page = 2; page <= 5; page++) {
     const nextPage = await requestsFilms(popularMovies, {
       language,
       page
@@ -25,6 +24,6 @@ export async function getAllMovies(language = 'es-ES', params = {}) {
       allMovies.push(...nextPage.results)
     }
   }
-*/
+
   return allMovies
 }
