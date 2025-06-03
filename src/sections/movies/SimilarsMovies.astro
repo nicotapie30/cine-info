@@ -6,7 +6,7 @@ import ArrowRight from '@/assets/svg/ArrowRight.svg'
 const { similars } = Astro.props
 ---
 
-<article class="relative mt-20 flex w-full flex-col items-center gap-4">
+<article class="relative mt-20 mb-[20rem] flex w-full flex-col items-center gap-4">
   <h4 class="mb-10 text-5xl font-bold text-white">Películas similares</h4>
   <div class="container-arrows flex items-center gap-6">
     <button class="button-left"
@@ -22,42 +22,31 @@ const { similars } = Astro.props
       /></button
     >
   </div>
-  <div
-    class="similar-movies flex w-full snap-x snap-mandatory justify-start gap-4 overflow-x-scroll scroll-smooth px-4 py-4"
+  <section
+    class="similar-movies absolute inset-0 z-20 mt-40 flex h-90 w-full gap-6 overflow-x-scroll overflow-y-hidden p-4"
   >
     {
       similars.results.map((similar) => {
         return (
-          <div
-            class="group contenedor relative h-[23rem] w-[18rem] min-w-[18rem] overflow-hidden rounded-lg border border-transparent shadow-md transition-all duration-300 focus-within:border focus-within:border-zinc-400 hover:border hover:border-zinc-400"
-            tabindex="0"
-          >
+          <div class="animate-fade-in relative aspect-video w-[30rem] min-w-[30rem]">
             <img
-              src={`${IMAGES_PATH}${similar.poster_path}`}
+              src={`${IMAGES_PATH}${similar.backdrop_path}`}
               alt={similar.title}
-              class="contenedor animate-fade-in animate-duration-300 group-hover:mask-fade-name absolute inset-0 h-full w-full rounded-lg transition-all duration-300 group-focus-within:scale-95 group-hover:scale-95"
+              class="animate-fade-in animate-delay-200 aspect-video min-w-full rounded-md object-center transition-all hover:scale-105"
               loading="lazy"
               fetchpriority="low"
               decoding="async"
             />
-            <div class="pointer-events-none absolute bottom-2 left-1.5 opacity-0 transition-all group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100">
-              <span class="text-shadow mb-0.5 block text-xl font-bold text-pretty text-white">
+            <div class="absolute bottom-16 left-1">
+              <span class="text-shadow mb-0.5 block text-xl text-pretty text-white lg:font-bold">
                 {similar.title}
               </span>
-              <a
-                class="pointer-events-auto inline-block cursor-pointer rounded-lg border-2 border-transparent bg-gray-500/50 px-4 py-2 text-white transition-all duration-100 hover:scale-105 hover:border-white hover:bg-gray-600/50 focus:scale-105 focus:border-white focus:bg-gray-600/50"
-                href={`/${similar.title}`}
-                tabindex="0"
-                aria-label={`Ver más sobre ${similar.title}`}
-              >
-                Ver más
-              </a>
             </div>
           </div>
         )
       })
     }
-  </div>
+  </section>
 </article>
 
 <style>
@@ -90,6 +79,13 @@ const { similars } = Astro.props
   const arrowRight = document.querySelector('.arrow-right') // Flecha derecha
   const buttonLeft = document.querySelector('.button-left') // Botón flecha izquierda
   const buttonRight = document.querySelector('.button-right') // Botón flecha derecha
+  const link = document.querySelector('.link') // Enlace de ver más
+
+  link.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    window.history.pushState({}, '', `/${e.target.value}`)
+  })
 
   arrowRight.addEventListener('click', () => {
     const scrollAmount = (containerMovies.scrollWidth / containerMovies.children.length) * 2.8
