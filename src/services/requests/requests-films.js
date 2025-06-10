@@ -20,9 +20,6 @@ export const requestsFilms = async (endpoint, params = {}) => {
     const data = await response.json()
     return data
   } catch (error) {
-    document.writeln(`
-        <span>No se encontraron películas.</span> </br>    
-        <span>Intentelo más tarde</span> </br>
-        <span>Error: ${error.message}</span>`)
+    return error
   }
 }
