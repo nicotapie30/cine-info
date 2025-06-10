@@ -46,7 +46,7 @@ const { title, description, showHeader, showFooter } = Astro.props
   }
 </style>
 
-<script>
+<script is:inline>
   import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
 
   dinamicPagesMovies()

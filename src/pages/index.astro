@@ -20,7 +20,7 @@ import SelectFilter from '@/components/SelectFilter.astro'
   <PosterPopularMovies />
 </Layout>
 
-<script>
+<script is:inline>
   import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
 
   dinamicPagesMovies()
