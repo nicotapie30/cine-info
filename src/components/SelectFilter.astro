@@ -12,7 +12,7 @@ const genres = await response.genres
   <select
     name="movie"
     id="movie"
-    class="select-filter-movie z-20 ml-10 block rounded-lg border bg-gray-700 p-2 text-sm text-white placeholder-gray-400 outline-0 transition-all duration-200 ease-in-out hover:bg-gray-700/90 focus:border-blue-500 focus:ring-blue-500"
+    class="select-filter-movie z-20 ml-2 block rounded-lg border bg-gray-700 p-2 text-sm text-white placeholder-gray-400 outline-0 transition-all duration-200 ease-in-out hover:bg-gray-700/90 focus:border-blue-500 focus:ring-blue-500 lg:ml-10"
   >
     <option value="_">Filtrar</option>
     {
@@ -22,8 +22,8 @@ const genres = await response.genres
     }
   </select>
 
-  <div class="container-list relative mt-10 flex w-full flex-col items-center px-10">
-    <div class="container-arrows flex items-center gap-6 opacity-0">
+  <div class="container-list relative flex w-full flex-col items-center px-10 lg:mt-10">
+    <div class="container-arrows mt-6 hidden items-center gap-6">
       <button class="button-left"
         ><ArrowLeft
           class="arrow-left cursor-pointer text-gray-600 transition-all hover:scale-105 hover:text-gray-500"
@@ -38,7 +38,7 @@ const genres = await response.genres
       >
     </div>
     <ul
-      class="list-movie absolute inset-0 mt-20 flex w-full snap-x scroll-pl-6 gap-4 overflow-x-scroll px-10"
+      class="list-movie absolute inset-0 mt-24 flex w-full snap-x scroll-pl-6 gap-4 overflow-x-scroll px-10"
     >
     </ul>
   </div>
@@ -70,12 +70,11 @@ const genres = await response.genres
     if (selectedValue === '_') {
       ul.innerHTML = ''
       popularMovies.classList.remove('hidden')
-      containerArrows.classList.add('opacity-0')
+      containerArrows.classList.add('hidden')
       containerList.classList.remove('h-[31rem]')
     }
 
     if (selectedOption) {
-      const selectedText = selectedOption.textContent
       const filteredMovies = movies.filter((movie) => {
         return movie.genre_ids.includes(parseInt(selectedValue))
       })
@@ -87,7 +86,7 @@ const genres = await response.genres
         li.setAttribute('aria-label', `Pelicula ${movie.title}`)
         li.innerHTML = `                      
                         <div
-                            class="group contenedor relative h-[23rem] w-[18rem] overflow-hidden rounded-lg border border-transparent shadow-md transition-all duration-300 focus-within:border focus-within:border-zinc-400 hover:border hover:border-zinc-400"
+                            class="group contenedor relative h-[12rem] w-[9rem] overflow-hidden rounded-lg border border-transparent shadow-md transition-all duration-300 focus-within:border focus-within:border-zinc-400 hover:border hover:border-zinc-400 md:h-[18rem] md:w-[15rem] lg:h-[23rem] lg:w-[18rem]"
                             tabindex="0"
                             >
                             <img
@@ -116,13 +115,13 @@ const genres = await response.genres
                         </div>
       `
         ul.appendChild(li)
-        containerArrows.classList.remove('opacity-0')
+        containerArrows.classList.remove('hidden')
         containerList.classList.add('h-[31rem]')
       })
     } else {
       popularMovies.classList.remove('hidden')
       ul.innerHTML = ''
-      containerArrows.classList.add('opacity-0')
+      containerArrows.classList.add('hidden')
       containerList.classList.remove('h-[31rem]')
     }
   })
@@ -169,25 +168,31 @@ const genres = await response.genres
 </script>
 
 <style>
+  @media (min-width: 768px) {
+    .list-movie::-webkit-scrollbar {
+      appearance: none;
+    }
+    .list-movie::-webkit-scrollbar:horizontal {
+      height: 9px;
+    }
+    .list-movie::-webkit-scrollbar:vertical {
+      width: 4px;
+    }
+    .list-movie::-webkit-scrollbar-thumb {
+      background-color: #4b5563;
+      border-radius: 20px;
+    }
+    .list-movie::-webkit-scrollbar-track {
+      background-color: #1f2937;
+      border-radius: 10px;
+    }
+    .list-movie::-webkit-scrollbar-button:increment,
+    .list-movie::-webkit-scrollbar-button {
+      display: none;
+    }
+  }
+
   .list-movie::-webkit-scrollbar {
     appearance: none;
-  }
-  .list-movie::-webkit-scrollbar:horizontal {
-    height: 9px;
-  }
-  .list-movie::-webkit-scrollbar:vertical {
-    width: 4px;
-  }
-  .list-movie::-webkit-scrollbar-thumb {
-    background-color: #4b5563;
-    border-radius: 20px;
-  }
-  .list-movie::-webkit-scrollbar-track {
-    background-color: #1f2937;
-    border-radius: 10px;
-  }
-  .list-movie::-webkit-scrollbar-button:increment,
-  .list-movie::-webkit-scrollbar-button {
-    display: none;
   }
 </style>

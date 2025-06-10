@@ -7,7 +7,7 @@ const movies = await getAllMovies()
 ---
 
 <section
-  class="grid h-auto w-full grid-cols-1 place-items-center gap-4 md:grid-cols-3 lg:grid-flow-dense lg:grid-cols-5"
+  class="grid h-auto w-full grid-cols-[repeat(auto-fit,_minmax(135px,_1fr))] place-items-center gap-4 px-2 sm:grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] md:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] lg:grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))]"
 >
   {
     movies.map((film) => {
@@ -21,3 +21,9 @@ const movies = await getAllMovies()
     })
   }
 </section>
+
+<script>
+  import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
+
+  dinamicPagesMovies()
+</script>

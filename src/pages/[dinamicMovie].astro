@@ -40,24 +40,21 @@ const genresNames = genres.genres
   showHeader={true}
   showFooter={true}
 >
-  <main class="relative bg-[url(images/Background_cine.webp)] px-18 py-10 pt-24">
+  <main class="relative bg-[url(images/Background_cine.webp)] px-2 py-10 pt-24 md:px-18">
     <div class="bg-dark-secondary/95 absolute inset-0 h-full w-full shadow-2xl"></div>
-    <article class="relative p-4">
+    <article class="relative p-2 md:p-4">
       <div class="bg-dark-secondary/75 absolute inset-0 rounded-lg"></div>
-      <section class="flex gap-10">
+      <section class="flex flex-col gap-10 md:flex-row">
         <img
           src=`${IMAGES_PATH}${movie.backdrop_path}`
           alt={movie.title}
-          class="mask-fade-image-film animate-fade-in-down aspect-video h-auto w-[50%] rounded-lg"
+          class="mask-fade-image-film animate-fade-in-down aspect-video h-auto w-full rounded-lg md:w-[50%]"
         />
 
         <DatesFilm movie={movie} genres={genresNames} credits={creditsMovie} />
       </section>
 
-      <h4 class="animate-fade-in-up mt-20 text-center text-5xl font-bold text-white">
-        Ver trailer
-      </h4>
-      <div class="mx-auto my-0 mt-16 w-[60%] overflow-hidden">
+      <div class="mx-auto mt-8 w-full overflow-hidden md:mt-16 md:w-[60%]">
         {
           movie.id === undefined || movie.id === null ? (
             <p>Trailer no disponible en ésta película</p>

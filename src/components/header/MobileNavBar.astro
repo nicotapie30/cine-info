@@ -1,0 +1,33 @@
+---
+import Link from './Link.astro'
+const { pathname } = Astro.url
+---
+
+<div
+  class="mobile-navbar absolute inset-0 z-30 hidden h-screen w-screen place-content-center bg-[#101828] text-center text-white sm:hidden"
+>
+  <nav>
+    <ul class="ul grid gap-6 text-lg">
+      <li>
+        <Link
+          href="/"
+          content="Inicio"
+          className=`link font-bold ${pathname === '/' ? 'underline' : 'underline-left'}`
+        />
+      </li>
+      <li>
+        <Link
+          href="/Upcoming"
+          content="Estrenos"
+          className=`link font-bold ${pathname === '/Upcoming' ? 'underline' : 'underline-left'}`
+        />
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<script>
+  import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
+
+  dinamicPagesMovies()
+</script>

@@ -3,25 +3,25 @@ import Link from './Link.astro'
 const { pathname } = Astro.url
 ---
 
+<!-- NavBar para pantallas grandes -->
 <div
-  class="group mask-fade-sides-bottom absolute top-0 left-[50%] flex h-16 w-[80rem] -translate-x-[50%] items-center justify-center rounded-b-md border-0 bg-gray-600/10 py-2 backdrop-blur-sm transition-all duration-300 ease-in-out hover:bg-gray-600/20"
+  class="navbar md:mask-fade-sides-bottom hidden md:absolute md:top-0 md:left-1/2 md:flex md:h-16 md:w-[80rem] md:translate-x-[-50%] md:items-center md:justify-center md:rounded-b-md md:bg-gray-600/10 md:py-6 md:transition md:hover:bg-gray-600/20"
 >
   <nav>
-    <ul>
+    <ul class="ul flex gap-6">
       <li>
-        <div>
-          <Link
-            href="/"
-            content="Inicio"
-            className={`link mask-fade-sides-bottom relative px-10 pt-20 pb-6 font-bold ${pathname !== '/' ? 'underline-left' : ''} ${pathname === '/' ? 'bg-gray-700/40 underline' : ''}`}
-          />
-
-          <Link
-            href="/Upcoming"
-            content="Estrenos"
-            className={`link mask-fade-sides-bottom relative px-10 pt-20 pb-6 font-bold ${pathname !== '/Upcoming' ? 'underline-left' : ''} ${pathname === '/Upcoming' ? 'bg-gray-700/40 underline' : ''}`}
-          />
-        </div>
+        <Link
+          href="/"
+          content="Inicio"
+          className={`link mask-fade-sides-bottom relative px-10 pt-20 pb-6 font-bold ${pathname !== '/' ? 'underline-left' : ''} ${pathname === '/' ? 'bg-gray-700/40 underline' : ''}`}
+        />
+      </li>
+      <li>
+        <Link
+          href="/Upcoming"
+          content="Estrenos"
+          className={`link mask-fade-sides-bottom relative px-10 pt-20 pb-6 font-bold ${pathname !== '/Upcoming' ? 'underline-left' : ''} ${pathname === '/Upcoming' ? 'bg-gray-700/40 underline' : ''}`}
+        />
       </li>
     </ul>
   </nav>

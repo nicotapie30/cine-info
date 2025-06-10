@@ -2,20 +2,33 @@
 import FilteredDinamicsMovies from '@/components/FilteredDinamicsMovies.astro'
 import InputSearch from './search/InputSearch.astro'
 import NavBar from './NavBar.astro'
+import MobileNavBar from './MobileNavBar.astro'
+import Menu from '@/assets/svg/Menu.svg'
+import Close from '@/assets/svg/Close.svg'
 ---
 
 <header
-  class="fixed top-0 z-10 flex h-30 w-full items-center justify-between bg-gradient-to-b from-gray-900 to-transparent px-6 py-4 text-white transition-all"
+  class="fixed top-0 z-10 w-full bg-gradient-to-b from-gray-900 to-transparent px-6 py-4 text-white sm:flex sm:items-center sm:justify-between"
 >
-  <a href="/" class="link-home" aria-label="Ir al Inicio">
-    <img class="h-16 w-auto" src="/images/cine_logo-big.webp" alt="Logo de cine Info" />
-  </a>
+  <div class="flex w-full items-center justify-between gap-6">
+    <a class="link-home" href="/" aria-label="Ir al Inicio">
+      <img
+        class="h-12 w-12 md:h-16 md:w-auto"
+        src="/images/cine_logo-big.webp"
+        alt="Logo de cine Info"
+      />
+    </a>
 
-  <NavBar />
+    <MobileNavBar />
+    <NavBar />
 
-  <div class="relative flex w-60 flex-col gap-2">
-    <InputSearch />
-    <FilteredDinamicsMovies />
+    <div class="relative w-44 flex-col gap-2 lg:flex lg:w-60">
+      <InputSearch />
+      <FilteredDinamicsMovies />
+    </div>
+
+    <Close type="button" class="close z-30 hidden h-8 w-8 cursor-pointer text-white" />
+    <Menu type="button" class="menu z-60 h-6 w-6 cursor-pointer text-white sm:hidden" />
   </div>
 </header>
 
@@ -37,3 +50,26 @@ import NavBar from './NavBar.astro'
     }
   }
 </style>
+
+<script>
+  import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
+
+  const menuBtn = document.querySelector('.menu')
+  const closeBtn = document.querySelector('.close')
+  const mobileNav = document.querySelector('.mobile-navbar')
+
+  menuBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    mobileNav.classList.remove('hidden')
+    menuBtn.classList.add('hidden')
+    closeBtn.classList.remove('hidden')
+  })
+
+  closeBtn?.addEventListener('click', () => {
+    mobileNav.classList.add('hidden')
+    closeBtn.classList.add('hidden')
+    menuBtn.classList.remove('hidden')
+  })
+
+  dinamicPagesMovies()
+</script>
