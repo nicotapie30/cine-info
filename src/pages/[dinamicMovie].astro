@@ -11,6 +11,7 @@ import DatesFilm from '@/components/DatesFilm.astro'
 import Cast from '@/components/Cast.astro'
 import SimilarsMovies from '@/sections/movies/SimilarsMovies.astro'
 import { genresMovies } from '@/lib/endpoints'
+import { generateCleanTitle } from '@/utils/generateCleanTitle'
 
 const { dinamicMovie } = Astro.params
 
@@ -19,7 +20,7 @@ export const getStaticPaths = async () => {
 }
 
 const movies = await getAllMovies()
-const movie = movies.find((movie) => movie.title === dinamicMovie)
+const movie = movies.find((movie) => generateCleanTitle(movie.title) === dinamicMovie)
 
 // Obtener la información de la película desde el id dinámico
 const creditsMovie = await requestsFilms(credits(movie.id))
@@ -46,7 +47,7 @@ const genresNames = genres.genres
       <div class="bg-dark-secondary/75 absolute inset-0 rounded-lg"></div>
       <section class="flex flex-col gap-10 md:flex-row">
         <img
-          src=`${IMAGES_PATH}${movie.backdrop_path}`
+          src={`${IMAGES_PATH}${movie.backdrop_path}`}
           alt={movie.title}
           class="mask-fade-image-film animate-fade-in-down aspect-video h-auto w-full rounded-lg md:w-[50%]"
         />
