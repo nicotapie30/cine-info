@@ -2,6 +2,7 @@
 import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
 import PosterMovie from '@/components/PosterMovie.astro'
 import { getAllMovies } from '@/lib/allMovies.js'
+import { generateCleanTitle } from '@/utils/generateCleanTitle'
 
 const movies = await getAllMovies()
 ---
@@ -15,7 +16,7 @@ const movies = await getAllMovies()
         <PosterMovie
           src={`${IMAGES_PATH}${film.poster_path}`}
           alt={film.title}
-          title={film.title}
+          title={generateCleanTitle(film.title)}
         />
       )
     })

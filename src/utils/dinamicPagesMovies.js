@@ -1,5 +1,6 @@
 import { getAllMovies } from '@/lib/allMovies'
 import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
+import { generateCleanTitle } from './generateCleanTitle'
 
 const movies = await getAllMovies()
 
@@ -32,7 +33,7 @@ export const dinamicPagesMovies = () => {
       .map((movies) => {
         return `          <ul class="w-full h-auto">
                             <button
-                            onclick="window.location.href='/${movies.title}'" 
+                            onclick="window.location.href='/${generateCleanTitle(movies.title)}'" 
                             aria-label="Película ${movies.title}">
                               <div
                                 class="filtered-link-movies pointer-events-auto w-full h-full inline cursor-pointer rounded-lg bg-transparent text-base text-white transition-all duration-200"
@@ -77,7 +78,7 @@ export const dinamicPagesMovies = () => {
                                 >
                                 <a
                                 class="pointer-events-auto inline-block cursor-pointer rounded-lg border-2 border-transparent bg-gray-500/50 px-4 py-2 text-white transition-all duration-100 hover:scale-105 hover:border-white hover:bg-gray-600/50 focus:scale-105 focus:border-white focus:bg-gray-600/50"
-                                href="/${movie.title}"
+                                href="/${generateCleanTitle(movie.title)}"
                                 tabindex="0"
                                 >
                                 Ver más
@@ -115,7 +116,7 @@ export const dinamicPagesMovies = () => {
         )
 
         if (filteredMovies.length > 0) {
-          window.location.href = `/${filteredMovies[0].title}`
+          window.location.href = `/${generateCleanTitle(filteredMovies[0].title)}`
           window.addEventListener('popstate', () => {
             searchInput.value = ''
           })

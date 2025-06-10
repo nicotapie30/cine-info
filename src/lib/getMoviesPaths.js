@@ -4,7 +4,7 @@ import { generateCleanTitle } from '@/utils/generateCleanTitle'
 export const getMoviesPaths = async () => {
   const movies = await getAllMovies()
   return movies
-    .map((movie) => {
+    .flatMap((movie) => {
       const cleanTitle = generateCleanTitle(movie.title)
       if (!cleanTitle) return null
       return { params: { dinamicMovie: cleanTitle } }

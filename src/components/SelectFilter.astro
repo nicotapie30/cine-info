@@ -48,6 +48,7 @@ const genres = await response.genres
   import { IMAGES_PATH } from '@/services/consts/const-imagesPath'
   import { getAllMovies } from '@/lib/allMovies'
   import { dinamicPagesMovies } from '@/utils/dinamicPagesMovies'
+  import { generateCleanTitle } from '@/utils/generateCleanTitle'
 
   const select = document.querySelector('#movie') as HTMLSelectElement
   const ul = document.querySelector('.list-movie')
@@ -105,7 +106,7 @@ const genres = await response.genres
                                 >
                                 <a
                                 class="pointer-events-auto inline-block cursor-pointer rounded-lg border-2 border-transparent bg-gray-500/50 px-4 py-2 text-white transition-all duration-100 hover:scale-105 hover:border-white hover:bg-gray-600/50 focus:scale-105 focus:border-white focus:bg-gray-600/50"
-                                href="/${movie.title}"
+                                href="/${generateCleanTitle(movie.title)}"
                                 tabindex="0"
                                 aria-label="Ver más sobre ${movie.title}"
                                 >
