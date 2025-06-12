@@ -16,10 +16,7 @@ const { title, description, showHeader, showFooter } = Astro.props
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/cine_logo.svg" />
 
-    <meta
-      name={description}
-      content="Descubre las mejores películas y series del cine histórico y actual. Reseñas y valoraciones honestas para ayudarte a elegir tus próximas películas y series favoritas"
-    />
+    <meta name="description" content={description} />
 
     <meta property="og:title" content="Cine Info" />
     <meta
@@ -27,7 +24,6 @@ const { title, description, showHeader, showFooter } = Astro.props
       content="Descubre las mejores películas y series del cine histórico y actual."
     />
     <ClientRouter />
-    <!--<meta property="og:image" content=""> -->
   </head>
   <body class="bg-dark-secondary/95 font-poppins">
     {showHeader && <Header />}
