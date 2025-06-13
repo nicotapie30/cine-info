@@ -17,24 +17,39 @@ const { movie, genres } = Astro.props
     </p>
   </div>
   <div class="flex flex-col gap-6">
-    <span class="text-sm font-bold text-zinc-200 md:text-base">
-      Puntuación: {Math.round(movie.vote_average)}
+    <span class="flex gap-2 text-sm font-bold text-zinc-200 md:text-base">
+      Puntuación:
+      <p class="text-zinc-400 text-shadow-md">
+        {Math.round(movie.vote_average)}
+      </p>
     </span>
 
-    <span class="text-sm font-bold text-zinc-200 md:text-base">
-      Opiniones: {movie.vote_count}
+    <span class="flex gap-2 text-sm font-bold text-zinc-200 md:text-base">
+      Opiniones:
+      <p class="text-zinc-400 text-shadow-md">
+        {movie.vote_count}
+      </p>
     </span>
 
-    <span class="text-sm font-bold text-zinc-200 md:text-base">
-      Fecha: {movie.release_date}
+    <span class="flex gap-2 text-sm font-bold text-zinc-200 md:text-base">
+      Fecha:
+      <p class="text-zinc-400 text-shadow-md">
+        {movie.release_date}
+      </p>
     </span>
 
-    <span class="text-sm font-bold text-zinc-200 md:text-base">
-      Popularidad: {movie.popularity}
+    <span class="flex gap-2 text-sm font-bold text-zinc-200 md:text-base">
+      Popularidad:
+      <p class="text-zinc-400 text-shadow-md">
+        {movie.popularity}
+      </p>
     </span>
 
-    <span class="text-sm font-bold text-zinc-200 md:text-base">
-      Género: {genres}
+    <span class="flex gap-2 text-sm font-bold text-zinc-200 md:text-base">
+      Género:
+      <p class="text-zinc-400 text-shadow-md">
+        {genres}
+      </p>
     </span>
   </div>
 </section>
