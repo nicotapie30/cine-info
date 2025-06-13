@@ -1,48 +1,48 @@
-# Astro Starter Kit: Basics
+# 🎬 Cine Info
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+![Cine info](/public/cine-info.png)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+¡Bienvenido a **Cine Info**!  
+Un sitio web donde podrás buscar y explorar información detallada sobre películas, incluyendo sinopsis, géneros, fechas de estreno, valoraciones y mucho más.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## 🚀 Características
 
-## 🚀 Project Structure
+- 🔍 Búsqueda de películas por título
+- 🎞️ Visualización de pósters e información relevante
+- ⭐ Valoraciones y puntuaciones
+- 📅 Fechas de lanzamiento
+- 🎭 Géneros y sinopsis
+- 👥 Reparto principal de cada película
 
-Inside of your Astro project, you'll see the following folders and files:
+---
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 🛠️ Tecnologías utilizadas
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- **JavaScript / TypeScript**
+- **Astro** 
+- **Tailwind CSS**
+- **API de TMDb** 
+- **Vercel** para despliegue 
 
-## 🧞 Commands
+---
 
-All commands are run from the root of the project, from a terminal:
+🙌 Agradecimientos
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+- **The Movie Database (TMDb)** por la API: 👉<a href="https://www.themoviedb.org/" target="_blank">The Movie Database (TMDb)</a>
 
-## 👀 Want to learn more?
+- Íconos e imágenes usadas con fines educativos
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+---
+**Te agradecería si quieres dar apoyo y marcar con una ⭐ el repositorio. Eres más que bienvenido a realizar cualquier tipo de cambio para que el proyecto crezca y mejore!**
+<br>
+
+### No dudes en contactarme
+
+- **LinkedIn:** 👉​<a href="https://www.linkedin.com/in/nicolasatapiedev30" target="_blank">LinkedIn</a>
+- **Instagram:** 👉​<a href="https://www.instagram.com/nicotapie1/" target="_blank">Instagram</a>
+  <br>
+
+<p align="center" style="font-size: 1.5em; font-weight: bold;"><b>Un fuerte abrazo ❤️</b></p>
